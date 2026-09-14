@@ -1,0 +1,118 @@
+{
+  "version": "1.0.0",
+  "description": "Follow-up questions to gather more context for better triage",
+  "questions": [
+    {
+      "id": "duration",
+      "question": "How long have you had these symptoms?",
+      "category": "timing",
+      "required": false,
+      "options": [
+        { "value": "just_started", "label": "Just started (today)" },
+        { "value": "1_3_days", "label": "1-3 days" },
+        { "value": "4_7_days", "label": "4-7 days" },
+        { "value": "1_2_weeks", "label": "1-2 weeks" },
+        { "value": "more_than_2_weeks", "label": "More than 2 weeks" }
+      ],
+      "impact": {
+        "just_started": { "risk_adjustment": 0, "note": "Early assessment — monitor closely" },
+        "1_3_days": { "risk_adjustment": 0, "note": "Short duration — may resolve on its own" },
+        "4_7_days": { "risk_adjustment": 0.2, "note": "Persistent symptoms — consider seeing a doctor" },
+        "1_2_weeks": { "risk_adjustment": 0.5, "note": "Prolonged symptoms — medical consultation recommended" },
+        "more_than_2_weeks": { "risk_adjustment": 0.8, "note": "Chronic symptoms — please see a healthcare professional" }
+      }
+    },
+    {
+      "id": "severity",
+      "question": "How severe are your symptoms?",
+      "category": "severity",
+      "required": false,
+      "options": [
+        { "value": "mild", "label": "Mild — noticeable but manageable" },
+        { "value": "moderate", "label": "Moderate — interfering with daily activities" },
+        { "value": "severe", "label": "Severe — difficult to manage" },
+        { "value": "very_severe", "label": "Very severe — unable to function normally" }
+      ],
+      "impact": {
+        "mild": { "risk_adjustment": 0, "note": "Mild symptoms" },
+        "moderate": { "risk_adjustment": 0.3, "note": "Moderate symptoms — consider medical advice" },
+        "severe": { "risk_adjustment": 0.7, "note": "Severe symptoms — medical consultation recommended" },
+        "very_severe": { "risk_adjustment": 1.0, "note": "Very severe — seek medical attention promptly" }
+      }
+    },
+    {
+      "id": "age_group",
+      "question": "What is the patient's age group?",
+      "category": "demographics",
+      "required": false,
+      "options": [
+        { "value": "infant", "label": "Infant (0-2 years)" },
+        { "value": "child", "label": "Child (3-12 years)" },
+        { "value": "adolescent", "label": "Adolescent (13-17 years)" },
+        { "value": "adult", "label": "Adult (18-59 years)" },
+        { "value": "elderly", "label": "Elderly (60+ years)" }
+      ],
+      "impact": {
+        "infant": { "risk_adjustment": 0.5, "note": "Infants require special attention — consult a pediatrician" },
+        "child": { "risk_adjustment": 0.3, "note": "Children may need age-appropriate care" },
+        "adolescent": { "risk_adjustment": 0, "note": "" },
+        "adult": { "risk_adjustment": 0, "note": "" },
+        "elderly": { "risk_adjustment": 0.4, "note": "Elderly patients may have complications — consult a doctor" }
+      }
+    },
+    {
+      "id": "pregnancy",
+      "question": "Is the patient pregnant or could they be pregnant?",
+      "category": "context",
+      "required": false,
+      "options": [
+        { "value": "no", "label": "No" },
+        { "value": "yes", "label": "Yes" },
+        { "value": "unsure", "label": "Unsure" }
+      ],
+      "impact": {
+        "no": { "risk_adjustment": 0, "note": "" },
+        "yes": { "risk_adjustment": 0.5, "note": "Pregnancy requires specialized care — consult an obstetrician" },
+        "unsure": { "risk_adjustment": 0.3, "note": "If pregnancy is possible, inform your healthcare provider" }
+      }
+    },
+    {
+      "id": "chronic_conditions",
+      "question": "Do you have any chronic health conditions?",
+      "category": "context",
+      "required": false,
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "diabetes", "label": "Diabetes" },
+        { "value": "hypertension", "label": "Hypertension (high blood pressure)" },
+        { "value": "asthma", "label": "Asthma or lung disease" },
+        { "value": "heart_disease", "label": "Heart disease" },
+        { "value": "kidney_disease", "label": "Kidney disease" },
+        { "value": "other", "label": "Other chronic condition" }
+      ],
+      "impact": {
+        "none": { "risk_adjustment": 0, "note": "" },
+        "diabetes": { "risk_adjustment": 0.3, "note": "Diabetes can affect recovery — monitor blood sugar" },
+        "hypertension": { "risk_adjustment": 0.2, "note": "Monitor blood pressure regularly" },
+        "asthma": { "risk_adjustment": 0.3, "note": "Respiratory symptoms may be more serious with asthma" },
+        "heart_disease": { "risk_adjustment": 0.4, "note": "Cardiac conditions require careful monitoring" },
+        "kidney_disease": { "risk_adjustment": 0.3, "note": "Kidney disease affects medication choices" },
+        "other": { "risk_adjustment": 0.2, "note": "Inform your doctor about all existing conditions" }
+      }
+    },
+    {
+      "id": "current_medications",
+      "question": "Are you currently taking any medications?",
+      "category": "context",
+      "required": false,
+      "options": [
+        { "value": "no", "label": "No medications" },
+        { "value": "yes", "label": "Yes, I am taking medications" }
+      ],
+      "impact": {
+        "no": { "risk_adjustment": 0, "note": "" },
+        "yes": { "risk_adjustment": 0.1, "note": "Bring your medication list when consulting a doctor" }
+      }
+    }
+  ]
+}

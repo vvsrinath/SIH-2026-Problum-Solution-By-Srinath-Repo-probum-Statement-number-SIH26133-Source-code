@@ -1,0 +1,80 @@
+# Full stack: frontend + backend + MongoDB + AI service.
+# Usage:
+#   docker compose up --build                      # all 4 services
+#
+# Open http://localhost:5173
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: swasthya-mongodb
+    restart: unless-stopped
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: >
+        mongosh --quiet --eval "try { rs.status().ok } catch (e) { rs.initiate({_id:'rs0',members:[{_id:0,host:'mongodb:27017'}]}).ok }" | grep -E "(1|ok: 1)" ||
+        mongosh --quiet --eval "rs.initiate({_id:'rs0',members:[{_id:0,host:'mongodb:27017'}]})" >/dev/null 2>&1
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 10s
+
+  ai-service:
+    build: ./backend/ai-service
+    container_name: swasthya-ai
+    restart: unless-stopped
+    ports:
+      - "8100:8100"
+    environment:
+      AI_SERVICE_SECRET: ${AI_SERVICE_SECRET:-dev-ai-internal-secret-9f2}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8100/api/v1/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  backend:
+    build: ./backend
+    container_name: swasthya-backend
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      ai-service:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      NODE_ENV: development
+      BACKEND_PORT: "8000"
+      TRUST_PROXY: "true"
+      MONGODB_URI: mongodb://mongodb:27017/swasthya_sathi
+      AUTH_PROVIDER: ${AUTH_PROVIDER:-mock}
+      SESSION_SECRET: ${SESSION_SECRET:-change-me-in-production}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:80}
+      AI_SERVICE_URL: http://ai-service:8100
+      AI_SERVICE_SECRET: ${AI_SERVICE_SECRET:-dev-ai-internal-secret-9f2}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    build: ./frontend
+    container_name: swasthya-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  mongo-data:

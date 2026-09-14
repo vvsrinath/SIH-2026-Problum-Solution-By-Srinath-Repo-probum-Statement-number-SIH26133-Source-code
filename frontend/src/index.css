@@ -1,0 +1,228 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  background-color: #f6f8fb;
+}
+
+/* Prevent media from ever exceeding its container (responsive safeguard) */
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Stop iOS from auto-inflating font sizes */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  color: #0f2942;
+  -webkit-font-smoothing: antialiased;
+}
+/* Clean, compact Leaflet chrome to match the app's hairline card language */
+.leaflet-container {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: #eef1f4;
+}
+.leaflet-control-zoom {
+  border: 1px solid #e7e9ee !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(15, 41, 66, 0.06) !important;
+}
+.leaflet-control-zoom a {
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  color: #0f2942 !important;
+  border-bottom-color: #eef0f4 !important;
+  font-weight: 500;
+}
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  color: #94a3b8 !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+}
+.ss-marker {
+  background: transparent;
+  border: 0;
+}
+.ss-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ss-scroll {
+  scrollbar-width: thin;
+}
+.ss-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.ss-scroll::-webkit-scrollbar-thumb {
+  background: #e2e6ec;
+  border-radius: 999px;
+}
+
+/* Safe area padding for mobile devices */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Prevent iOS zoom on inputs */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Improve tap responsiveness */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* ---- Native desktop title bar (Window Controls Overlay) ---- */
+.ss-native-titlebar {
+  position: fixed;
+  top: env(titlebar-area-y, 0px);
+  left: env(titlebar-area-x, 0px);
+  width: env(titlebar-area-width, 100vw);
+  height: env(titlebar-area-height, 40px);
+  display: flex;
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #e7e9ee;
+  z-index: 100;
+  -webkit-app-region: drag;
+  app-region: drag;
+  user-select: none;
+}
+
+.ss-native-titlebar-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  overflow: hidden;
+}
+
+.ss-native-no-drag {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+/* When the overlay is active the app content shares the window with the
+   titlebar region, so nudge the page and sticky headers below the bar. */
+@media (display-mode: window-controls-overlay) {
+  body {
+    padding-top: env(titlebar-area-height, 40px);
+  }
+  header.sticky {
+    top: env(titlebar-area-height, 40px) !important;
+  }
+}
+
+/* ---- Subtle route-entry animation ---- */
+@keyframes ss-route-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ss-route-enter {
+  animation: ss-route-in 200ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ss-route-enter {
+    animation: none;
+  }
+}
+
+/* ---- Loading skeletons ---- */
+@keyframes ss-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+.ss-skeleton {
+  background: linear-gradient(
+    90deg,
+    #eef1f6 25%,
+    #e2e8f0 50%,
+    #eef1f6 75%
+  );
+  background-size: 200% 100%;
+  animation: ss-shimmer 1.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ss-skeleton {
+    animation: none;
+  }
+}
+
+/* ---- Accessible focus ring everywhere ---- */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---- Emergency / alert pulse ---- */
+@keyframes ss-pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+.ss-live-dot {
+  animation: ss-pulse-soft 1.6s ease-in-out infinite;
+}
+
+/* ---- Print support ---- */
+@media print {
+  .ss-no-print,
+  .sticky,
+  .fixed {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  .ss-print-area {
+    box-shadow: none !important;
+    border: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "version": "1.0.0",
+  "description": "Symptom vocabulary for Swasthya Sathi rule-based triage",
+  "categories": {
+    "respiratory": {
+      "label": "Respiratory",
+      "symptoms": [
+        {
+          "id": "cough",
+          "label": "Cough",
+          "aliases": ["coughing", "dry cough", "wet cough", "persistent cough"],
+          "severity_weight": 1.0
+        },
+        {
+          "id": "shortness_of_breath",
+          "label": "Difficulty breathing",
+          "aliases": ["breathlessness", "can't breathe", "breathing difficulty", "short of breath", "dyspnea"],
+          "severity_weight": 2.0
+        },
+        {
+          "id": "chest_tightness",
+          "label": "Chest tightness",
+          "aliases": ["tight chest", "chest pressure", "chest feels tight"],
+          "severity_weight": 2.0
+        },
+        {
+          "id": "sore_throat",
+          "label": "Sore throat",
+          "aliases": ["throat pain", "throat infection", "painful throat"],
+          "severity_weight": 0.8
+        },
+        {
+          "id": "nasal_congestion",
+          "label": "Nasal congestion",
+          "aliases": ["stuffy nose", "blocked nose", "runny nose", "cold"],
+          "severity_weight": 0.5
+        },
+        {
+          "id": "wheezing",
+          "label": "Wheezing",
+          "aliases": ["whistling sound when breathing", "wheeze"],
+          "severity_weight": 1.8
+        }
+      ]
+    },
+    "gastrointestinal": {
+      "label": "Gastrointestinal",
+      "symptoms": [
+        {
+          "id": "stomach_pain",
+          "label": "Stomach pain",
+          "aliases": ["abdominal pain", "belly pain", "stomach ache", "tummy ache", "gastric pain"],
+          "severity_weight": 1.2
+        },
+        {
+          "id": "nausea",
+          "label": "Nausea",
+          "aliases": ["feeling sick", "want to vomit", "nauseous"],
+          "severity_weight": 0.8
+        },
+        {
+          "id": "vomiting",
+          "label": "Vomiting",
+          "aliases": ["throwing up", "puking", "vomit"],
+          "severity_weight": 1.2
+        },
+        {
+          "id": "diarrhea",
+          "label": "Diarrhea",
+          "aliases": ["loose motions", "watery stool", "loose stool", "loose stools"],
+          "severity_weight": 1.2
+        },
+        {
+          "id": "constipation",
+          "label": "Constipation",
+          "aliases": ["hard stool", "difficulty passing stool", "unable to pass stool"],
+          "severity_weight": 0.6
+        },
+        {
+          "id": "loss_of_appetite",
+          "label": "Loss of appetite",
+          "aliases": ["not hungry", "don't want to eat", "no appetite", "appetite loss"],
+          "severity_weight": 0.7
+        }
+      ]
+    },
+    "fever_and_pain": {
+      "label": "Fever & Pain",
+      "symptoms": [
+        {
+          "id": "fever",
+          "label": "Fever",
+          "aliases": ["high temperature", "temperature", "feverish", "chills", "shivering"],
+          "severity_weight": 1.2
+        },
+        {
+          "id": "headache",
+          "label": "Headache",
+          "aliases": ["head pain", "migraine", "head ache"],
+          "severity_weight": 1.0
+        },
+        {
+          "id": "body_pain",
+          "label": "Body pain",
+          "aliases": ["body ache", "joint pain", "muscle pain", "generalized pain", "aching body"],
+          "severity_weight": 0.8
+        },
+        {
+          "id": "back_pain",
+          "label": "Back pain",
+          "aliases": ["backache", "lower back pain", "spine pain"],
+          "severity_weight": 0.9
+        },
+        {
+          "id": "ear_pain",
+          "label": "Ear pain",
+          "aliases": ["earache", "ear infection", "pain in ear"],
+          "severity_weight": 1.0
+        },
+        {
+          "id": "eye_pain",
+          "label": "Eye pain or redness",
+          "aliases": ["eye infection", "red eyes", "painful eyes", "eye redness"],
+          "severity_weight": 1.0
+        }
+      ]
+    },
+    "skin": {
+      "label": "Skin",
+      "symptoms": [
+        {
+          "id": "rash",
+          "label": "Skin rash",
+          "aliases": ["rashes", "skin eruption", "skin allergy", "itchy skin"],
+          "severity_weight": 0.8
+        },
+        {
+          "id": "skin_lesion",
+          "label": "Skin lesion or wound",
+          "aliases": ["wound", "ulcer", "boil", "skin sore", "non-healing wound"],
+          "severity_weight": 1.5
+        }
+      ]
+    },
+    "general": {
+      "label": "General",
+      "symptoms": [
+        {
+          "id": "fatigue",
+          "label": "Fatigue or weakness",
+          "aliases": ["tired", "exhausted", "weakness", "fatigue", "low energy", "no energy"],
+          "severity_weight": 0.7
+        },
+        {
+          "id": "dizziness",
+          "label": "Dizziness",
+          "aliases": ["vertigo", "lightheaded", "feeling faint", "dizzy"],
+          "severity_weight": 1.3
+        },
+        {
+          "id": "weight_loss",
+          "label": "Unexplained weight loss",
+          "aliases": ["losing weight", "weight loss", "unintentional weight loss"],
+          "severity_weight": 1.4
+        },
+        {
+          "id": "swelling",
+          "label": "Swelling",
+          "aliases": ["swollen", "edema", "puffiness", "swollen legs", "swollen feet"],
+          "severity_weight": 1.2
+        },
+        {
+          "id": "insomnia",
+          "label": "Sleep problems",
+          "aliases": ["can't sleep", "insomnia", "sleep difficulty", "trouble sleeping"],
+          "severity_weight": 0.5
+        },
+        {
+          "id": "anxiety",
+          "label": "Anxiety or stress",
+          "aliases": ["anxious", "stressed", "panic", "nervousness", "worry"],
+          "severity_weight": 0.7
+        }
+      ]
+    },
+    "urinary": {
+      "label": "Urinary",
+      "symptoms": [
+        {
+          "id": "painful_urination",
+          "label": "Painful urination",
+          "aliases": ["pain when peeing", "burning urination", "dysuria", "painful pee"],
+          "severity_weight": 1.3
+        },
+        {
+          "id": "frequent_urination",
+          "label": "Frequent urination",
+          "aliases": ["peeing often", "urination frequency", "frequent urination"],
+          "severity_weight": 0.7
+        },
+        {
+          "id": "blood_in_urine",
+          "label": "Blood in urine",
+          "aliases": ["hematuria", "red urine", "bloody urine"],
+          "severity_weight": 2.0
+        }
+      ]
+    },
+    "cardiac": {
+      "label": "Cardiac",
+      "symptoms": [
+        {
+          "id": "chest_pain",
+          "label": "Chest pain",
+          "aliases": ["heart pain", "chest hurt", "chest ache", "pain in chest"],
+          "severity_weight": 2.5
+        },
+        {
+          "id": "palpitations",
+          "label": "Heart palpitations",
+          "aliases": ["fast heartbeat", "irregular heartbeat", "heart racing", "palpitations"],
+          "severity_weight": 2.0
+        }
+      ]
+    },
+    "mental_health": {
+      "label": "Mental Health",
+      "symptoms": [
+        {
+          "id": "depression",
+          "label": "Persistent sadness",
+          "aliases": ["depressed", "sad", "hopeless", "low mood", "feeling down"],
+          "severity_weight": 0.8
+        },
+        {
+          "id": "confusion",
+          "label": "Confusion or disorientation",
+          "aliases": ["confused", "disoriented", "can't think clearly", "mental confusion"],
+          "severity_weight": 2.2
+        }
+      ]
+    }
+  }
+}

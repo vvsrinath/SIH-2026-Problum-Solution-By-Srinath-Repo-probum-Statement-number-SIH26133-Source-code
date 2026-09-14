@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "description": "Emergency red-flag rules — escalate when symptom combinations indicate serious conditions",
+  "rules": [
+    {
+      "id": "chest_pain_urgent",
+      "symptom_ids": ["chest_pain"],
+      "condition": "any",
+      "escalate_to": "URGENT",
+      "message": "Chest pain can be a sign of a heart attack or other serious condition.",
+      "action": "Call emergency services or go to the nearest hospital immediately."
+    },
+    {
+      "id": "breathing_severe",
+      "symptom_ids": ["shortness_of_breath"],
+      "condition": "any",
+      "escalate_to": "URGENT",
+      "message": "Difficulty breathing requires immediate medical evaluation.",
+      "action": "Go to the nearest emergency department."
+    },
+    {
+      "id": "palpitations_chest",
+      "symptom_ids": ["palpitations", "chest_pain"],
+      "condition": "all",
+      "escalate_to": "URGENT",
+      "message": "Heart palpitations with chest pain require immediate evaluation.",
+      "action": "Go to the nearest emergency department."
+    },
+    {
+      "id": "confusion_severe",
+      "symptom_ids": ["confusion"],
+      "condition": "any",
+      "escalate_to": "URGENT",
+      "message": "Confusion or disorientation can indicate a serious medical condition.",
+      "action": "Seek emergency medical attention."
+    },
+    {
+      "id": "blood_in_urine",
+      "symptom_ids": ["blood_in_urine"],
+      "condition": "any",
+      "escalate_to": "HIGH",
+      "message": "Blood in urine can indicate a serious underlying condition.",
+      "action": "Visit a healthcare professional within 24 hours."
+    },
+    {
+      "id": "chest_pain_breathing",
+      "symptom_ids": ["chest_pain", "shortness_of_breath"],
+      "condition": "all",
+      "escalate_to": "URGENT",
+      "message": "Chest pain with breathing difficulty is a medical emergency.",
+      "action": "Call emergency services immediately."
+    },
+    {
+      "id": "severe_vomiting_dehydration",
+      "symptom_ids": ["vomiting", "diarrhea"],
+      "condition": "all",
+      "escalate_to": "HIGH",
+      "message": "Vomiting with diarrhea can lead to dehydration, especially in children and the elderly.",
+      "action": "Seek medical attention if you cannot keep fluids down for more than 24 hours."
+    }
+  ]
+}

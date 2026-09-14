@@ -1,0 +1,10 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-dotenv>=1.0
+pytest>=8.0
+httpx>=0.27
+
+# Optional: lightweight ML for symptom classification
+# Install with: pip install sentence-transformers
+# Falls back to keyword matching if not installed
+# sentence-transformers>=2.2.0

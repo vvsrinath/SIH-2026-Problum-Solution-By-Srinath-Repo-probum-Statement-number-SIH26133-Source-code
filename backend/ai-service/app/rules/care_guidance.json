@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0",
+  "description": "Care guidance rules mapping risk levels to recommended actions",
+  "risk_levels": {
+    "LOW": {
+      "label": "Low Risk",
+      "color": "green",
+      "description": "Your symptoms are generally mild and may not require immediate medical attention.",
+      "recommended_action": "Monitor your symptoms at home. Rest, stay hydrated, and consult a pharmacist if symptoms persist beyond 3-5 days.",
+      "self_care": [
+        "Rest and get adequate sleep",
+        "Drink plenty of fluids",
+        "Maintain a balanced diet",
+        "Monitor temperature if fever is present"
+      ],
+      "seek_care_if": [
+        "Symptoms worsen after 3 days",
+        "New symptoms develop",
+        "Symptoms interfere with daily activities"
+      ],
+      "next_steps": [
+        "You can monitor your symptoms at home",
+        "Visit your nearest health worker if symptoms persist",
+        "Use the Symptom Tracker to log changes"
+      ]
+    },
+    "MODERATE": {
+      "label": "Moderate Risk",
+      "color": "amber",
+      "description": "Your symptoms suggest you should consult a healthcare professional within 1-2 days.",
+      "recommended_action": "Schedule an appointment with a doctor or visit your nearest primary health centre. Bring a list of your current medications.",
+      "self_care": [
+        "Continue to rest and stay hydrated",
+        "Take over-the-counter pain relief if needed (paracetamol for fever/pain)",
+        "Avoid strenuous activity",
+        "Keep a record of your symptoms"
+      ],
+      "seek_care_if": [
+        "Symptoms become severe",
+        "Fever rises above 103°F (39.4°C)",
+        "New symptoms develop",
+        "You feel significantly worse"
+      ],
+      "next_steps": [
+        "Book an appointment with a doctor",
+        "Visit your local PHC if no appointment is available",
+        "Ask a health worker for guidance"
+      ]
+    },
+    "HIGH": {
+      "label": "High Risk",
+      "color": "red",
+      "description": "Your symptoms require prompt medical evaluation. Please see a healthcare professional today.",
+      "recommended_action": "Visit a doctor or primary health centre today. If you cannot reach a facility, contact a health worker immediately.",
+      "self_care": [
+        "Do not delay seeking medical care",
+        "If you have fever, take paracetamol as directed",
+        "Stay hydrated",
+        "Do not self-medicate with antibiotics"
+      ],
+      "seek_care_if": [
+        "You experience chest pain",
+        "Difficulty breathing worsens",
+        "You feel confused or disoriented",
+        "Symptoms are rapidly getting worse"
+      ],
+      "next_steps": [
+        "Visit your nearest health facility today",
+        "Call a health worker for immediate guidance",
+        "If symptoms worsen, go to the emergency department"
+      ]
+    },
+    "URGENT": {
+      "label": "Urgent — Seek Emergency Care",
+      "color": "critical",
+      "description": "Your symptoms indicate a potentially serious condition that requires immediate medical attention.",
+      "recommended_action": "Go to the nearest hospital or call emergency services immediately. Do not wait.",
+      "self_care": [
+        "This is not a situation for self-care",
+        "Emergency medical attention is needed",
+        "Do not drive yourself if possible"
+      ],
+      "seek_care_if": [],
+      "next_steps": [
+        "Go to the nearest hospital immediately",
+        "Call emergency services",
+        "Inform the medical staff of all your symptoms"
+      ]
+    },
+    "UNKNOWN": {
+      "label": "Assessment Incomplete",
+      "color": "gray",
+      "description": "We could not determine your risk level with the information provided.",
+      "recommended_action": "Please provide more details about your symptoms, or consult a healthcare professional for a proper evaluation.",
+      "self_care": [],
+      "seek_care_if": [
+        "Your symptoms are severe",
+        "You are unsure about your condition"
+      ],
+      "next_steps": [
+        "Provide more symptom details for a better assessment",
+        "Consult a health worker",
+        "Visit your nearest PHC"
+      ]
+    }
+  },
+  "condition_associations": {
+    "respiratory_infection": {
+      "symptom_ids": ["cough", "sore_throat", "nasal_congestion", "fever"],
+      "min_match": 2,
+      "possible_conditions": ["Common cold", "Upper respiratory infection", "Viral fever"],
+      "default_risk": "LOW"
+    },
+    "pneumonia_suspected": {
+      "symptom_ids": ["cough", "fever", "shortness_of_breath", "chest_tightness"],
+      "min_match": 3,
+      "possible_conditions": ["Pneumonia", "Bronchitis", "Lower respiratory infection"],
+      "default_risk": "HIGH"
+    },
+    "gastroenteritis": {
+      "symptom_ids": ["stomach_pain", "vomiting", "diarrhea", "nausea", "fever"],
+      "min_match": 2,
+      "possible_conditions": ["Gastroenteritis", "Food poisoning", "Viral stomach bug"],
+      "default_risk": "MODERATE"
+    },
+    "migraine_tension": {
+      "symptom_ids": ["headache", "nausea", "dizziness", "fatigue"],
+      "min_match": 2,
+      "possible_conditions": ["Tension headache", "Migraine", "Stress-related headache"],
+      "default_risk": "LOW"
+    },
+    "uti_suspected": {
+      "symptom_ids": ["painful_urination", "frequent_urination", "fever", "back_pain"],
+      "min_match": 2,
+      "possible_conditions": ["Urinary tract infection", "Kidney infection"],
+      "default_risk": "MODERATE"
+    },
+    "cardiac_concern": {
+      "symptom_ids": ["chest_pain", "palpitations", "shortness_of_breath", "dizziness", "swelling"],
+      "min_match": 2,
+      "possible_conditions": ["Cardiac evaluation needed"],
+      "default_risk": "URGENT"
+    },
+    "general_malaise": {
+      "symptom_ids": ["fatigue", "body_pain", "fever", "loss_of_appetite"],
+      "min_match": 2,
+      "possible_conditions": ["Viral fever", "General malaise", "Seasonal illness"],
+      "default_risk": "LOW"
+    }
+  }
+}

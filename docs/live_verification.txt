@@ -1,0 +1,31 @@
+# End-to-end verification (live) — 2026-09-02T10:10Z
+
+## 1. Login (mock, dev-only)
+  PATIENT: PATIENT
+  DOCTOR (A): DOCTOR
+  DOCTOR (B, Specialist): DOCTOR
+
+## 2. AI Triage (Swasthya Mitra)
+  fever+cough: MODERATE [AI]
+  chest pain+breathing difficulty: URGENT [MANUAL_FALLBACK]
+
+## 3. SlotLock booking (Doc A, Wed 11:10 IST, future)
+  booked: apt_XiImGQUCSLnN (BOOKED)
+  duplicate same slot: APPOINTMENT_SLOT_UNAVAILABLE (409)
+
+## 4. Consultation (Doc A)
+  confirm: CONFIRMED
+  start: con_utJ2d8eTFcLS (IN_PERSON/SCHEDULED)
+  end: ENDED
+
+## 5. Referral A -> B
+  created: ref_k-rLy-siErKF (from=doc_4fTNOO578jB7 to=doc_zSPuM-brMYYG status=CREATED)
+  Doc B accept: ACCEPTED
+
+## 6. Follow-up
+  created: fup_O_iU4GdyQQ-t (SCHEDULED)
+  patient self-complete: COMPLETED
+  cross-user (doc) blocked: false
+
+## 7. Notifications (patient)
+  total=18 unread=18

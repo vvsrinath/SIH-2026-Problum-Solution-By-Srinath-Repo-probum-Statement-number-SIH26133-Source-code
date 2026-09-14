@@ -1,0 +1,9 @@
+[build]
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+# Client-side routing (SPA) fallback: any path serves index.html (200)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
