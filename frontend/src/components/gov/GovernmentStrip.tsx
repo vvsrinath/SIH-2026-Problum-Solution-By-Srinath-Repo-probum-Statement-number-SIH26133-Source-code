@@ -1,4 +1,5 @@
 import { IndianFlag } from './GovernmentIdentity';
+import { assetUrl } from '../../lib/assets';
 import {
   ABDM_ECOSYSTEM,
   GOVERNMENT_SERVICES,
@@ -47,7 +48,7 @@ function IntegrationTile({ item, size = 'md' }: { item: GovernmentIntegration; s
   return (
     <span className={`flex ${tile} shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-white`}>
       <img
-        src="/images/gov/emblem-of-india.svg"
+        src={assetUrl('/images/gov/emblem-of-india.svg')}
         alt="Government of India"
         className={`${inner} object-contain`}
       />

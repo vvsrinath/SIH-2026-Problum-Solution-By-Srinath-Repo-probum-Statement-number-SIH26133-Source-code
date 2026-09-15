@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from 'react';
+import { assetUrl } from '../../lib/assets';
 
 /**
  * Accurate Government of India / public-ecosystem integration map.
@@ -48,14 +49,14 @@ export const ABDM_ECOSYSTEM: GovernmentIntegration[] = [
     detail: 'Ayushman Bharat Digital Mission — overall digital-health ecosystem and interoperability direction.',
     status: 'ready',
     dependency: 'authorization-dependent',
-    logo: '/images/gov/ayushman-bharat.svg',
+    logo: assetUrl('/images/gov/ayushman-bharat.svg'),
   },
   {
     name: 'ABHA',
     detail: 'Ayushman Bharat Health Account — patient health identity and linking health records.',
     status: 'planned',
     dependency: 'authorization-dependent',
-    logo: '/images/gov/abha.jpg',
+    logo: assetUrl('/images/gov/abha.jpg'),
   },
   {
     name: 'HPR',
@@ -84,35 +85,35 @@ export const GOVERNMENT_SERVICES: GovernmentIntegration[] = [
     detail: 'National Single Sign-On (NSSO) — government-oriented authentication and identity direction.',
     status: 'ready',
     dependency: 'authorization-dependent',
-    logo: '/images/gov/meripehchaan.png',
+    logo: assetUrl('/images/gov/meripehchaan.png'),
   },
   {
     name: 'NMC / National Medical Register',
     detail: 'NMC (MoHFW statutory body) — medical-professional verification reference.',
     status: 'verification',
     dependency: 'access-dependent',
-    logo: '/images/gov/nmc.jpg',
+    logo: assetUrl('/images/gov/nmc.jpg'),
   },
   {
     name: 'Bhuvan',
     detail: 'Indian Geo-Platform of ISRO/NRSC — healthcare location and geospatial discovery.',
     status: 'planned',
     dependency: 'integration-dependent',
-    logo: '/images/gov/bhuvan.png',
+    logo: assetUrl('/images/gov/bhuvan.png'),
   },
   {
     name: 'BharatVC',
     detail: 'Online video-consultation workflow for government services.',
     status: 'ready',
     dependency: 'integration-dependent',
-    logo: '/images/gov/bharatvc.png',
+    logo: assetUrl('/images/gov/bharatvc.png'),
   },
   {
     name: 'GovDrive',
     detail: 'NIC government cloud-storage / collaboration (uses Parichay SSO, not MeriPehchaan).',
     status: 'future',
     dependency: 'authorization-dependent',
-    logo: '/images/gov/govdrive.png',
+    logo: assetUrl('/images/gov/govdrive.png'),
   },
 ];
 
@@ -123,6 +124,6 @@ export const PRIVATE_TECH: GovernmentIntegration[] = [
     detail: 'Indian private maps, search, geocoding, routes and facility-location technology.',
     status: 'planned',
     dependency: 'integration-dependent',
-    logo: '/images/gov/mappls.jpg',
+    logo: assetUrl('/images/gov/mappls.jpg'),
   },
 ];

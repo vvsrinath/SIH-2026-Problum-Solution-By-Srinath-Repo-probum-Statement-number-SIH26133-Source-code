@@ -32,7 +32,7 @@ jobs:
         run: cd frontend && npm ci
 
       - name: Build
-        run: cd frontend && npm run build
+        run: cd frontend && VITE_BASE="/$(echo '${{ github.repository }}' | cut -d/ -f2)/" npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

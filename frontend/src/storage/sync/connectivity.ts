@@ -42,7 +42,10 @@ export async function checkBackendReachable(timeoutMs = 4000): Promise<boolean> 
       cache: 'no-store',
     });
     clearTimeout(timer);
-    const ok = res.ok || res.status === 401 || res.status === 403;
+    // Any HTTP response proves the app's own host answered — including 404
+    // when the frontend is hosted without a backend (GitHub Pages). Only
+    // network-level failures (refused/unreachable) mean offline.
+    const ok = res.ok || res.status === 401 || res.status === 403 || res.status === 404;
     setBackendState(ok ? 'online' : 'offline');
     return ok;
   } catch {

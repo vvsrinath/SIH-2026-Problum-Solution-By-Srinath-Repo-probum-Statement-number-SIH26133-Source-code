@@ -7,6 +7,7 @@ import { LiveDateTime } from './LiveDateTime';
 import { useLanguage } from '../../context/LanguageContext';
 import { publicNav, navLabel } from '../../data/navigation';
 import { cn } from '../../utils/cn';
+import { assetUrl } from '../../lib/assets';
 
 export function Header() {
   const { t } = useLanguage();
@@ -17,7 +18,7 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-shell items-center gap-6 px-6">
         <div className="flex items-center gap-2.5">
           <img
-            src="/images/gov/emblem-of-india.svg"
+            src={assetUrl('/images/gov/emblem-of-india.svg')}
             alt="Emblem of India"
             className="hidden h-7 w-auto object-contain sm:block"
           />

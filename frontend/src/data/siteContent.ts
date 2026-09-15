@@ -1,4 +1,5 @@
 // DEMO DATA — replace with CMS/API content later
+import { assetUrl } from '../lib/assets';
 import {
   BuildingIcon,
   CalendarDaysIcon,
@@ -164,7 +165,7 @@ export const howItWorksSteps = [
 }];
 
 
-export const heroImage = "/images/443e6e94-7c12-4d95-8359-b832657ea7f8.jpg";
+export const heroImage = assetUrl("/images/443e6e94-7c12-4d95-8359-b832657ea7f8.jpg");
 
 
-export const doctorImage = "/images/fcce296d-1fc9-4293-8987-db518cd130f0.jpg";
+export const doctorImage = assetUrl("/images/fcce296d-1fc9-4293-8987-db518cd130f0.jpg");

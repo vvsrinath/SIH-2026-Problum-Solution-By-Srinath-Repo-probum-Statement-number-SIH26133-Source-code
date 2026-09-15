@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cn } from '../../utils/cn';
+import { assetUrl } from '../../lib/assets';
 
 /**
  * Standard Government of India identification block: Emblem of India next to
@@ -20,7 +21,7 @@ export function GovernmentIdentity({ variant = 'compact', className }: Governmen
       )}
     >
       <img
-        src="/images/gov/emblem-of-india.svg"
+        src={assetUrl('/images/gov/emblem-of-india.svg')}
         alt="Emblem of India"
         className={cn(
           'h-9 w-auto shrink-0 object-contain',
@@ -54,7 +55,7 @@ export function IndianFlag({ className, label }: { className?: string; label?: R
   return (
     <span className={cn('inline-flex items-center gap-1.5', className)}>
       <img
-        src="/images/gov/flag-of-india.svg"
+        src={assetUrl('/images/gov/flag-of-india.svg')}
         alt="Flag of India"
         className="h-3.5 w-auto rounded-[2px] object-cover shadow-sm ring-1 ring-line-soft"
       />
@@ -67,7 +68,7 @@ export function IndianFlag({ className, label }: { className?: string; label?: R
 export function AyushmanBharatBadge({ className, size = 36 }: { className?: string; size?: number }) {
   return (
     <img
-      src="/images/gov/ayushman-bharat.svg"
+      src={assetUrl('/images/gov/ayushman-bharat.svg')}
       alt="Ayushman Bharat Digital Mission"
       width={size}
       height={size}
