@@ -3,16 +3,18 @@
 const CACHE_NAME = 'swasthya-v2';
 const API_CACHE = 'swasthya-api-v1';
 
+// Base-aware paths: `${BASE}` is '/REPO/' on GitHub Pages, '/' elsewhere.
+const BASE = self.registration.scope;
+
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/favicon.ico',
-  '/manifest.webmanifest',
-  '/images/gov/emblem-of-india.svg',
-  '/images/gov/flag-of-india.svg',
-  '/images/gov/ashoka-chakra.svg',
-  '/images/gov/ayushman-bharat.svg',
-  '/images/gov/isro.svg',
+  BASE,
+  `${BASE}index.html`,
+  `${BASE}manifest.webmanifest`,
+  `${BASE}images/gov/emblem-of-india.svg`,
+  `${BASE}images/gov/flag-of-india.svg`,
+  `${BASE}images/gov/ashoka-chakra.svg`,
+  `${BASE}images/gov/ayushman-bharat.svg`,
+  `${BASE}images/gov/isro.svg`,
 ];
 
 self.addEventListener('install', (event) => {
@@ -82,7 +84,7 @@ async function networkFirstNav(request: Request): Promise<Response> {
   } catch {
     const cached = await caches.match(request);
     if (cached) return cached;
-    const fallback = await caches.match('/index.html');
+    const fallback = await caches.match(`${BASE}index.html`);
     if (fallback) return fallback;
     return new Response('Offline', { status: 503, statusText: 'Unavailable' });
   }
