@@ -59,8 +59,15 @@ function AppShell() {
 }
 
 export function App() {
+  // GitHub Pages serves project sites under /<repo>/. Use a basename there so
+  // react-router matches; anywhere else (Vercel, Docker, domain root) stays '/'.
+  const basename =
+    window.location.hostname.endsWith('github.io') && window.location.pathname.length > 1
+      ? window.location.pathname.split('/').slice(0, 2).join('/') || '/'
+      : '/';
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <LanguageProvider>
         <AuthProvider>
           <ToastProvider>
