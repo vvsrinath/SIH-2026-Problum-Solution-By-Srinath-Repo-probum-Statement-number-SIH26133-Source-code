@@ -31,12 +31,14 @@ export interface NavItem {
 
 const NAV_KEYS: Record<string, string> = {
   Home: 'home',
+  About: 'about',
   'About Us': 'aboutUs',
   Services: 'services',
   'How It Works': 'howItWorks',
   'For Patients': 'forPatients',
   'For Health Workers': 'forHealthWorkers',
   'Health Tips': 'healthTips',
+  Contact: 'contact',
   'Contact Us': 'contactUs',
   Dashboard: 'dashboard',
   'Ask a Health Worker': 'askHealthWorker',

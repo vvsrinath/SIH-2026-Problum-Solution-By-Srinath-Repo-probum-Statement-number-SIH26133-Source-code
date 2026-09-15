@@ -26,8 +26,8 @@ const columns = [
 {
   title: 'Company',
   links: [
-  { label: 'About Us', to: '/about' },
-  { label: 'Contact Us', to: '/contact' }]
+  { label: 'About', to: '/about' },
+  { label: 'Contact', to: '/contact' }]
 
 }];
 
