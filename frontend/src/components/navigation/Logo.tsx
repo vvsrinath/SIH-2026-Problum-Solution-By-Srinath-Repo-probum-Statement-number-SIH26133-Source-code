@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { cn } from '../../utils/cn';
+import { assetUrl } from '../../lib/assets';
 
 interface LogoProps {
   /** When provided, the mark links to this path. */
@@ -12,7 +13,7 @@ interface LogoProps {
 export function Logo({ to = '/', size = 'sm', className }: LogoProps) {
   const mark = (
     <img
-      src="/logo.png"
+      src={assetUrl('/logo.png')}
       alt="Swasthya Sathi logo"
       className={cn(
         'shrink-0 rounded-full object-contain shadow-card',
