@@ -9,7 +9,7 @@
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#f5faf7",
-  "theme_color": "#0b6b3a",
+  "theme_color": "#ffffff",
   "categories": ["health", "medical", "government"],
   "lang": "en",
   "dir": "ltr",

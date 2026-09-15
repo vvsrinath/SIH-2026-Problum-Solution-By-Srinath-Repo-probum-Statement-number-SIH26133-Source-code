@@ -87,6 +87,14 @@ body {
   }
 }
 
+/* Installed apps: let the sticky header paint the top safe area white so no
+   OS-drawn green tint bar appears behind the iOS status bar. */
+@media (display-mode: standalone) {
+  header.sticky {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
 /* Prevent iOS zoom on inputs */
 @media screen and (max-width: 768px) {
   input, select, textarea {
